@@ -4,22 +4,24 @@
 	<meta charset="utf-8">
 	<title>Explorador de archivos</title>
 
-	<style>
-	section>div	{clear:both;}
-	.group		{overflow:hidden;padding:2px;}
-	section .group:nth-child(odd) {background:#e5e5e5;}
-	.directory	{font-weight:bold;}
-	.name		{float:left;width:250px;overflow:hidden;}
-	.mime		{float:left;margin-left:10px;}
-	.size		{float:right;}
-	.bold		{font-weight:bold;}
-	footer		{text-align:center;margin-top:20px;color:#808080;}
-	</style>
+		<style>
+				section>div	{clear:both;}
+				.group			{overflow:hidden;padding:2px;}
+				section .group:nth-child(odd) {background:#e5e5e5;}
+				.directory	{font-weight:bold;}
+				.name				{float:left;width:450px;overflow:hidden;font-family: Verdana; font-size: 15px;}
+				.mime				{float:left;margin-left:10px; font-family: Verdana; font-size: 15px;}
+				.size				{float:right; font-family: Verdana; font-size: 15px;}
+				.bold				{font-weight:bold;}
+				footer			{text-align:center;margin-top:20px;color:#808080;}
+		</style>
 </head>
 
 <body>
 <?php
+
 // Obtenemos la ruta a revisar, y la ruta anterior para volver...
+
 if($_GET["path"])
 {
 	$path=$_GET["path"];
@@ -29,11 +31,11 @@ if($_GET["path"])
 	else
 		$back="*";
 }else{
-	$path="*";
+	$path="pdf/*";
 }
 ?>
 <header>
-	<h1>Explorador de archivos en PHP</h1>
+	<h1>Explorador de archivos</h1>
 </header>
 <nav>
 	<h2><?php echo $path?></h2>
@@ -42,8 +44,8 @@ if($_GET["path"])
 <section>
 	<?php
 	// si no estamos en la raiz, permitimos volver hacia atras
-	if($path!="*")
-		echo "<div class='bold group'><a href='?path=".$back."'>...</a></div>";
+	//if($path!="*")
+	//	echo "<div class='bold group'><a href='?path=".$back."'>...</a></div>";
 
 	// devuelve el tipo mime de su extensión (desde PHP 5.3)
 	$finfo1 = finfo_open(FILEINFO_MIME_TYPE);
@@ -71,7 +73,7 @@ if($_GET["path"])
 			echo "<div class='group'>
 				<div class='size'>".number_format(filesize($filename)/1024,2,",",".")." Kb</div>
 				<div class='name'>".end(explode("/",$filename))."</div>
-				<div class='mime'>".$fileMime." (".$fileEncoding.") <a href=\"$filename\" target=\"_blank\">Descarga</a></div>
+				<div class='mime'>".$fileMime." (".$fileEncoding.") <a href=\"$filename\" target=\"_blank\">Descarga del archivo</a></div>
 			</div>";
 		}
 	}
