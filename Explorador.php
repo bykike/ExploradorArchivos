@@ -5,35 +5,37 @@
 	<title>Explorador de archivos</title>
 
 		<style>
-				section>div	{clear:both;}
+				section>div		{clear:both;}
 				.group			{overflow:hidden;padding:2px;}
 				section .group:nth-child(odd) {background:#e5e5e5;}
-				.directory	{font-weight:bold;}
+				.directory			{font-weight:bold;}
 				.name				{float:left;width:450px;overflow:hidden;font-family: Verdana; font-size: 15px;}
 				.mime				{float:left;margin-left:10px; font-family: Verdana; font-size: 15px;}
 				.size				{float:right; font-family: Verdana; font-size: 15px;}
 				.bold				{font-weight:bold;}
-				footer			{text-align:center;margin-top:20px;color:#808080;}
+				footer				{text-align:center;margin-top:20px;color:#808080;}
 		</style>
 </head>
 
 <body>
+
 <?php
 
-// Obtenemos la ruta a revisar, y la ruta anterior para volver...
+	// Obtenemos la ruta a revisar, y la ruta anterior para volver...
 
-if($_GET["path"])
-{
-	$path=$_GET["path"];
-	$back=implode("/",explode("/",$_GET["path"],-2));
-	if($back)
-		$back.="/*";
-	else
-		$back="*";
-}else{
-	$path="pdf/*";
-}
+	if($_GET["path"])
+	{
+		$path=$_GET["path"];
+		$back=implode("/",explode("/",$_GET["path"],-2));
+		if($back)
+			$back.="/*";
+		else
+			$back="*";
+	}else{
+		$path="pdf/*";
+	}
 ?>
+
 <header>
 	<h1>Explorador de archivos</h1>
 </header>
