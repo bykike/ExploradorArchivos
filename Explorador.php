@@ -3,18 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Explorador de archivos</title>
-
-		<style>
-				section>div		{clear:both;}
-				.group			{overflow:hidden;padding:2px;}
-				section .group:nth-child(odd) {background:#e5e5e5;}
-				.directory			{font-weight:bold;}
-				.name				{float:left;width:450px;overflow:hidden;font-family: Verdana; font-size: 15px;}
-				.mime				{float:left;margin-left:10px; font-family: Verdana; font-size: 15px;}
-				.size				{float:right; font-family: Verdana; font-size: 15px;}
-				.bold				{font-weight:bold;}
-				footer				{text-align:center;margin-top:20px;color:#808080;}
-		</style>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
