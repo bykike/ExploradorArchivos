@@ -21,7 +21,7 @@
 		else
 			$back="*";
 	}else{
-		$path="pdf/*";
+		$path="home/*";
 	}
 ?>
 
