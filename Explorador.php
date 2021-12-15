@@ -3,30 +3,43 @@
 <head>
 	<meta charset="utf-8">
 	<title>Explorador de archivos</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<style>
+				section>div	{clear:both;}
+				.group			{overflow:hidden;padding:2px;}
+				section .group:nth-child(odd) {background:#e5e5e5;}
+				.directory	{font-weight:bold;}
+				.name		{float:left;width:450px;overflow:hidden;font-family: Verdana; font-size: 15px;}
+				.mime		{float:left;margin-left:10px; font-family: Verdana; font-size: 15px;}
+				.size		{float:right; font-family: Verdana; font-size: 15px;}
+				.bold		{font-weight:bold;}
+				footer		{text-align:center;margin-top:20px;color:#808080;font-family: Verdana;font-size: 14px;}
+		</style>
 </head>
 
 <body>
 
+
 <?php
 
-	// Obtenemos la ruta a revisar, y la ruta anterior para volver...
+// Obtenemos la ruta a revisar, y la ruta anterior para volver...
 
-	if($_GET["path"])
-	{
-		$path=$_GET["path"];
-		$back=implode("/",explode("/",$_GET["path"],-2));
-		if($back)
-			$back.="/*";
-		else
-			$back="*";
-	}else{
-		$path="home/*";
-	}
+if($_GET["path"])
+{
+	$path=$_GET["path"];
+	$back=implode("/",explode("/",$_GET["path"],-2));
+	if($back)
+		$back.="/*";
+	else
+		$back="*";
+}else{
+	$path="pdf/*";
+}
 ?>
-
 <header>
-	<h1>Explorador de archivos</h1>
+	<h2 style="font-family: verdana; color:black;">Fichas de catálogo en PDF</h2>
+	<p style="font-family: verdana; color:black;">Para <strong>descargar archivo</strong> hacer click o si desea <strong>copiar el link</strong> hacerlo con botón derecho sobre el texto "Descargar u obtener link"</p>
+	<br>
 </header>
 <nav>
 	<h2><?php echo $path?></h2>
@@ -64,7 +77,10 @@
 			echo "<div class='group'>
 				<div class='size'>".number_format(filesize($filename)/1024,2,",",".")." Kb</div>
 				<div class='name'>".end(explode("/",$filename))."</div>
-				<div class='mime'>".$fileMime." (".$fileEncoding.") <a href=\"$filename\" target=\"_blank\">Descarga del archivo</a></div>
+				<div class='mime'>".$fileMime." (".$fileEncoding.")
+					<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					<a href=\"$filename\" target=\"_blank\">Descargar u obtener link</a>
+				</div>
 			</div>";
 		}
 	}
